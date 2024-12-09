@@ -14,7 +14,8 @@ class RegistrationPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Registration Page'),
       ),
- 
+      backgroundColor:
+          Color.fromARGB(255, 13, 241, 241), // Set the background color here
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
