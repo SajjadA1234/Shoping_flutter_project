@@ -135,9 +135,7 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ProductViewPage(
-                                    productName: 'ali',
-                                  )),
+                              builder: (context) => ProductViewPage()),
                         );
                         // Handle see more action
                       },
