@@ -1,6 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/product_view_page.dart';
+import 'profile_page.dart';
+import 'settings_page.dart';
 
 class HomePage extends StatelessWidget {
+  final List<String> imageUrls = [
+    'https://example.com/image1.jpg',
+    'https://example.com/image2.jpg',
+    'https://example.com/image3.jpg',
+    'https://example.com/image4.jpg',
+    'https://example.com/image5.jpg',
+    'https://example.com/image6.jpg',
+  ];
+
+  final List<String> productNames = [
+    'Product A',
+    'Product B',
+    'Product C',
+    'Product D',
+    'Product E',
+    'Product F',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +36,14 @@ class HomePage extends StatelessWidget {
             },
           ),
         ],
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            // Open drawer
-            Scaffold.of(context).openDrawer();
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
           },
         ),
       ),
@@ -40,15 +64,21 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('Item 1'),
+              title: Text('Profile'),
               onTap: () {
-                // Handle item 1 tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                );
               },
             ),
             ListTile(
-              title: Text('Item 2'),
+              title: Text('Settings'),
               onTap: () {
-                // Handle item 2 tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
               },
             ),
           ],
@@ -57,49 +87,63 @@ class HomePage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GridView.count(
-            crossAxisCount: 2,
-            children: List.generate(6, (index) {
-              return Card(
-                elevation: 4,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Image.network(
-                        'https://via.placeholder.com/150', // Replace with your product image URL
-                        fit: BoxFit.cover,
-                      ),
+          crossAxisCount: 2,
+          children: List.generate(productNames.length, (index) {
+            return Card(
+              elevation: 4,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 200,
+                    height: 100,
+                    child: Image.network(
+                      imageUrls[index],
+                      fit: BoxFit.cover,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Product ${index + 1}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      productNames[index],
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text('\$${(index + 1) * 10}',
-                          style: TextStyle(color: Colors.green)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      '\$${(index + 1) * 10}',
+                      style: TextStyle(color: Colors.green),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text('Discount: ${index * 10}%',
-                          style: TextStyle(color: Colors.red)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      'Discount: ${index * 10}%',
+                      style: TextStyle(color: Colors.red),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Handle see more action
-                        },
-                        child: Text('See More'),
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductViewPage(
+                                    productName: 'ali',
+                                  )),
+                        );
+                        // Handle see more action
+                      },
+                      child: Text('See More'),
                     ),
-                  ],
-                ),
-              );
-            })),
+                  ),
+                ],
+              ),
+            );
+          }),
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
@@ -111,6 +155,6 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-    ); // <-- Add semicolon here
+    );
   }
 }
