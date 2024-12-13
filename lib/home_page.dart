@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/product_view_page.dart';
+import 'package:flutter_application_2/shopping_cart_page.dart';
 import 'profile_page.dart';
 import 'settings_page.dart';
 
@@ -32,6 +33,10 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ShoppingCartPage()),
+              );
               // Handle shopping cart action
             },
           ),
