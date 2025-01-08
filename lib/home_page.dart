@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/categories_page.dart';
 import 'package:flutter_application_2/product_view_page.dart';
 import 'package:flutter_application_2/shopping_cart_page.dart';
 import 'profile_page.dart';
@@ -73,7 +74,15 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                  MaterialPageRoute(
+                      builder: (context) => ProfilePage(
+                            name: 'ali',
+                            email: 'sdd@gmail.com',
+                            bio: 'nfjvndfbvb',
+                            id: '@bjbhgbg',
+                            avatarUrl:
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrzKyBWlOfeeqHW9_-XUmHOgWsCEUhOydetQ&s',
+                          )),
                 );
               },
             ),
@@ -83,6 +92,15 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Categories'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CategoriesPage()),
                 );
               },
             ),

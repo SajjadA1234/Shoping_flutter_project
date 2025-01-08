@@ -1,71 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/profile_page.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
+  @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  bool _languageSelection = false;
+  bool _disabledPeople = false;
+  bool _colorInversion = false;
+  bool _displayOrder = false;
+  bool _moreOptions = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stonway'),
-        backgroundColor: Colors.teal,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              // Handle shopping cart action
-            },
-          ),
-        ],
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
+        title: Text('Settings'),
       ),
-      drawer: Drawer(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal,
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text('Profile'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
-                );
+          children: [
+            SwitchListTile(
+              title: Text('Language Selection'),
+              value: _languageSelection,
+              onChanged: (bool value) {
+                setState(() {
+                  _languageSelection = value;
+                });
               },
             ),
-            ListTile(
-              title: Text('Settings'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );
+            SwitchListTile(
+              title: Text('Disabled People'),
+              value: _disabledPeople,
+              onChanged: (bool value) {
+                setState(() {
+                  _disabledPeople = value;
+                });
+              },
+            ),
+            SwitchListTile(
+              title: Text('Color Inversion'),
+              value: _colorInversion,
+              onChanged: (bool value) {
+                setState(() {
+                  _colorInversion = value;
+                });
+              },
+            ),
+            SwitchListTile(
+              title: Text('Display Order'),
+              value: _displayOrder,
+              onChanged: (bool value) {
+                setState(() {
+                  _displayOrder = value;
+                });
+              },
+            ),
+            SwitchListTile(
+              title: Text('More Options'),
+              value: _moreOptions,
+              onChanged: (bool value) {
+                setState(() {
+                  _moreOptions = value;
+                });
               },
             ),
           ],
         ),
-      ),
-      body: Center(
-        child: Text('This is the Settings Page.'),
       ),
     );
   }
