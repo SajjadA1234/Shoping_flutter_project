@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/categories_page.dart';
+import 'package:flutter_application_2/contact_us_page.dart';
+import 'package:flutter_application_2/home_page.dart';
 import 'settings_page.dart'; // Ensure your SettingsPage is imported
 
 void main() {
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'My App',
       initialRoute: '/',
       routes: {
-        '/': (context) => CategoriesPage(),
+        '/': (context) => HomePage(),
         '/settings': (context) =>
             SettingsPage(), // Define the SettingsPage route
         // Add other routes here if necessary

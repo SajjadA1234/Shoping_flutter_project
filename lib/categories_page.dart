@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/contact_us_page.dart';
 import 'package:flutter_application_2/product_view_page.dart';
 import 'package:flutter_application_2/shopping_cart_page.dart';
 import 'profile_page.dart';
@@ -123,6 +124,15 @@ class CategoriesPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => CategoriesPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('contact_us_page'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ContactUsPage()),
                 );
               },
             ),
