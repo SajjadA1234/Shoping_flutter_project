@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Invitation%20to%20cooperate.dart';
 import 'package:flutter_application_2/categories_page.dart';
 import 'package:flutter_application_2/contact_us_page.dart';
 import 'package:flutter_application_2/home_page.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'My App',
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => CardGridPage(),
         '/settings': (context) =>
             SettingsPage(), // Define the SettingsPage route
         // Add other routes here if necessary
